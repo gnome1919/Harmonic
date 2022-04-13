@@ -1,0 +1,169 @@
+﻿<Window x:Class="Harmonic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:staticData="clr-namespace:Harmonic"
+		xmlns:dg="http://schemas.microsoft.com/wpf/2008/toolkit"
+        Title="MainWindow" Height="600" Width="820">
+
+	<Window.Resources>
+		<staticData:Para1_List x:Key="Para1_List"/>
+		<staticData:Para2_List x:Key="Para2_List"/>
+	</Window.Resources>
+	
+	<Grid Background="#FFE5E5E5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="36.576"/>
+            <ColumnDefinition Width="103.424"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" TextAlignment="Left" Grid.Row="4" Grid.Column="0" Text="Input Data:" FontWeight="Bold" FontSize="12" Margin="5" />
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Import Input File:" FontWeight="Bold" FontSize="12" Margin="5" />
+        <TextBox Name="InputFileTbx" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="20" Grid.Row="0" TextWrapping="NoWrap" VerticalAlignment="Center" Width="168" IsReadOnly="True" Margin="10,5,102,5" Text="{Binding Model.DataPeriod, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="..." Grid.Column="3" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Width="15" Height="20" Margin="6,5,82,5" />
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="166" TextAlignment="Left" Grid.Row="0" Grid.Column="4" Text="Export Output File:" FontWeight="Bold" FontSize="12" Margin="0,5,14,5" />
+        <TextBox Name="OutputFileTbx" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="20" Grid.Row="0" TextWrapping="NoWrap" VerticalAlignment="Center" Width="168" IsReadOnly="True" Margin="143,5,51,5" Text="{Binding Model.DataPeriod, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="..." Grid.Column="5" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Width="16" Margin="140,5,26,5" Height="20" />
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="1" Grid.Column="0" Text="Data Period" Margin="5" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="2" Grid.Column="0" Text="Number of Data" Margin="5" />
+
+        <TextBox Name="DataPeriodTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="1" TextWrapping="NoWrap" VerticalAlignment="Center" Width="188" Margin="10,5,82,5" Grid.ColumnSpan="3" IsReadOnly="True" />
+        <TextBox Name="DataNumberTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="2" TextWrapping="NoWrap" VerticalAlignment="Center" Width="120" Margin="10,5" IsReadOnly="True"/>
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="5" Grid.Column="0" Text="SNR for Reconstruction" Margin="5"  />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="6" Grid.Column="0" Text="Latitude for Observation" Margin="5" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Height="20" Width="160" TextAlignment="Left" Grid.Row="7" Grid.Column="0" Text="Rayleigh Criterion" Margin="5" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="34" Width="160" TextAlignment="Left" Grid.Row="8" Grid.Column="0" Text="Number of Moving Average Applied on Data" Margin="5,3" />
+
+        <TextBox Name="SNRTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Margin="10,5"/>
+        <TextBox Name="LatTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Margin="10,5"/>
+        <TextBox Name="RayTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Margin="10,5"/>
+        <TextBox Name="NMATbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Margin="10"/>
+
+        <Button Content="Run" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="19" VerticalAlignment="Center" Width="76" Height="0" Margin="13,0,14,0"/>
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="4" Margin="0,0,30,0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <TextBlock Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="File QA/QC results" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="59" Grid.RowSpan="2" Width="332" Margin="-1,0,-1,-1"/>
+        </Border>
+        <dg:DataGrid Grid.Column="4" HorizontalAlignment="Left" Height="140" Grid.Row="6" Grid.RowSpan="5" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTemplateColumn Header="Round" Width="100" >
+                    <dg:DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Height="22" ItemsSource="{StaticResource Para1_List}" SelectedItem="{Binding Period}" />
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellEditingTemplate>
+                </dg:DataGridTemplateColumn>
+                <dg:DataGridTemplateColumn Header="No. of Neighbors" Width="120">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Period2}"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+
+        <dg:DataGrid x:Name="dgData" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="140" Margin="10,3,0,0" Grid.Row="14" Grid.RowSpan="6" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2">
+			<dg:DataGrid.Columns>
+				<dg:DataGridTemplateColumn Header="Para" Width="70">
+					<dg:DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Period}"/>
+						</DataTemplate>
+					</dg:DataGridTemplateColumn.CellTemplate>
+					<dg:DataGridTemplateColumn.CellEditingTemplate>
+						<DataTemplate>
+							<ComboBox Height="22" ItemsSource="{StaticResource Para1_List}" SelectedItem="{Binding Period}" />
+						</DataTemplate>
+					</dg:DataGridTemplateColumn.CellEditingTemplate>
+				</dg:DataGridTemplateColumn>
+				<dg:DataGridTextColumn Header="Period" Width="70" IsReadOnly="True" Binding="{Binding Calc}" />
+				<dg:DataGridTemplateColumn Header="Para2" Width="70">
+					<dg:DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Period2}"/>
+						</DataTemplate>
+					</dg:DataGridTemplateColumn.CellTemplate>
+					<dg:DataGridTemplateColumn.CellEditingTemplate>
+						<DataTemplate>
+							<ComboBox Height="22" ItemsSource="{StaticResource Para2_List}" SelectedItem="{Binding Period2}" />
+						</DataTemplate>
+					</dg:DataGridTemplateColumn.CellEditingTemplate>
+				</dg:DataGridTemplateColumn>
+				<dg:DataGridTextColumn Header="Period2" Width="70" IsReadOnly="True" Binding="{Binding Calc2}" />
+                <dg:DataGridTextColumn Header="Amp. Ratio" Width="70" IsReadOnly="True" Binding="{Binding AmpList}" />
+                <dg:DataGridTextColumn Header="Phase Diff." Width="70" IsReadOnly="True" Binding="{Binding PhaseDiff}" />
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="20" Width="243" TextAlignment="Left" Grid.Row="4" Grid.Column="4" Text="Number of Moving Average Applied on Data" Margin="0,5,119,5" Grid.ColumnSpan="2" />
+        <TextBox Name="NoOfMATbx" Grid.Column="5" HorizontalAlignment="Center" Height="20" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" Margin="72,5,30,5" PreviewTextInput="NoOfMATbx_PreviewTextInput"/>
+
+        <CheckBox Content="Inclusion of Inferences" HorizontalAlignment="Left" Grid.Row="12" VerticalAlignment="Center" Height="20" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="22" Width="160" TextAlignment="Left" Grid.Row="13" Text="Number of Inferences"/>
+        <TextBox Name="NoOfInfTbx" Grid.Column="1" HorizontalAlignment="Center" Height="20" Grid.Row="13" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" PreviewTextInput="NoOfInfTbx_PreviewTextInput"  />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="20" Width="243" TextAlignment="Left" Grid.Row="5" Grid.Column="4" Text="Sampling Interval in Minutes" Margin="0,5,119,5" Grid.ColumnSpan="2" />
+        <TextBox Name="SampIntTbx" Grid.Column="5" HorizontalAlignment="Center" Height="20" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" Margin="72,5,30,5" />
+
+        <CheckBox Content="Inclusion of shallow water harmonics" HorizontalAlignment="Left" Grid.Row="12" Grid.Column="4" VerticalAlignment="Center" Height="20" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Height="22" Width="215" TextAlignment="Left" Grid.Row="13" Text="Number of Shallow Water Periods" Grid.Column="4" Grid.ColumnSpan="2" Margin="0,4"/>
+        <TextBox Name="ShalWatPerTbx" Grid.Column="5" HorizontalAlignment="Center" Height="20" Grid.Row="13" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Margin="30,5,32,5" PreviewTextInput="ShalWatPerTbx_PreviewTextInput"  />
+        <dg:DataGrid HorizontalAlignment="Left" Height="140" Grid.Row="14" Grid.RowSpan="6" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2" Grid.Column="4">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTemplateColumn Header="Para" Width="70">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Period}"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                    <dg:DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Height="22" ItemsSource="{StaticResource Para1_List}" SelectedItem="{Binding Period}" />
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellEditingTemplate>
+                </dg:DataGridTemplateColumn>
+                <dg:DataGridTextColumn Header="Period" Width="70" IsReadOnly="True" Binding="{Binding Calc}" />
+                <dg:DataGridTemplateColumn Header="Para2" Width="70">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Period2}"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                    <dg:DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Height="22" ItemsSource="{StaticResource Para2_List}" SelectedItem="{Binding Period2}" />
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellEditingTemplate>
+                </dg:DataGridTemplateColumn>
+                <dg:DataGridTextColumn Header="Period2" Width="70" IsReadOnly="True" Binding="{Binding Calc2}" /> 
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+    </Grid>
+</Window>
